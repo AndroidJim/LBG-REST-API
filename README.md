@@ -83,6 +83,16 @@ $ curl -s -X DELETE http://localhost:8080/product/delete/<id>
 ~~~
 
 n.b: For these commands anything surrounded by angled braces <> needs to be replaced by you
+---
+
+# Testing
+
+To run tests on this project, use the command: npm test
+
+~~~ bash
+npm test
+~~~
+
 
 ---
 
