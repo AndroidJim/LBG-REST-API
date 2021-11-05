@@ -131,6 +131,23 @@ and expect a status code of 200, status text of Ok, and a message body containin
 Alternatively, we could "black box" system test by using the front end to create a new product and reading the page to
 confirm the new product has been created.
 
+### User Acceptance Testing
+
+An example of a User Acceceptance Test is that the product can be created from the UI as a user.
+
+"As a" user
+"When" I enter a product id into the update field
+"and" enter new information
+"I Want" to be able to see that the product has been updated
+
+GIVEN that a user can access the front-end of the API
+WHEN they enter a valid id into the update field
+AND they enter a name
+AND they enter a description
+AND they enter a price
+AND they click on the PUT button
+THEN the updated product is visible on the page.
+
 }
 ---
 
