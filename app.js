@@ -1,10 +1,10 @@
-const express = require('express'); // express import from node_modules
+const express = require('express'); // express import from node_modules. Used to make the APi's
 const Datastore = require('nedb'); // Database import from node_modules
-const db = new Datastore(); // Database setup
-const chalk = require('chalk'); // chalk import from node_modules
-const app = express(); // 
-const log = console.log; // setting console.log to log
-const bodyParser = require('body-parser'); // Body Parser for data in http requests
+const db = new Datastore(); // Database setup - new database.
+const chalk = require('chalk'); // chalk import from node_modules. Makes command line look pretty in GUI
+const app = express(); //  start new instance of express, called app
+const log = console.log; // setting console.log to log. Makes logging a bit quicker by specifing a log constant.
+const bodyParser = require('body-parser'); // Body Parser for data in http requests. Allows the data in the body to be read.
 
 // add body parser to app
 app.use(bodyParser.json());
@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-// serve static files through express
+// serve static files through express - for front end only. This is from the /public directory. 
 app.use(express.static(__dirname + '/public'));
 
 //function to build product
@@ -33,7 +33,7 @@ app.post(`/product/create`, (req, res) => {
     // pretty logging with Chalk!
     log(chalk.green.bold(`\nCREATE\n`));
 
-    // use the product building function to make a product object
+    // use the product building function to make a product object. Take the fields from the request and pass them into the ProductBuilder to create theproduct object.
     let product = productBuilder(req.body.name, req.body.description, req.body.price);
 
     // insert into Database with 'insert'
@@ -59,7 +59,7 @@ app.get('/product/read', (req,res) => {
     // pretty logging with Chalk!
     log(chalk.blue.bold(`\nREAD`) + chalk.blue.dim(` (all)\n`));
 
-    // query the Database with 'nothing' to get all data
+    // query the Database with 'nothing' to get all data - find everything in the database.
     db.find({}, (err, products) => {
 
         // if error, send a response containing the error message
@@ -85,7 +85,7 @@ app.get('/product/read/:id', (req,res) => {
     // getting the product id from the URL as a parameter
     let prodId = req.params.id;
 
-    // query the Database '_id:' to get the product
+    // query the Database '_id:' to get the product -> paramater is specified in the path :id 
     db.find({_id: prodId}, (err, product) => {
 
         // if error, send a response containing the error message
@@ -153,7 +153,7 @@ app.delete('/product/delete/:id', (req,res) => {
         if (err) res.send(err);
         
         // otherwise we send HTTP status of 204 (NO CONTENT)
-        res.status(202).send(`Deleted product by id: ${prodId}`);
+        res.status(204).send(`Deleted product by id: ${prodId}`);
 
         // console log that we are deleting the products
         log(`Deleted product by id: ${prodId}`);
