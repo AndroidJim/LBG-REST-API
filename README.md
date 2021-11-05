@@ -109,8 +109,16 @@ We can expect an object to be created that mathes this format
     description : "A yellow citrus fruit.",
     price : 0.4
 }
+~~~
 
 ### Integration
+
+An example integration test we can create for this project is to test the RESTful endpoints.
+If we test the DELETE endpoint by sending a request with a method of "DELETE" and a path of "/product/delete/1" 
+We should expect the response to be:  
+
+Status Code: 204 
+Status tesxt: No Content 
 
 
 }
