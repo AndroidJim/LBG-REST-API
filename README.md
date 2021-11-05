@@ -120,6 +120,16 @@ We should expect the response to be:
 Status Code: 204 
 Status tesxt: No Content 
 
+### System Testing
+
+Our first example of system testing is "system integration testing" to perform this on our project we could 
+integration test the CREATE method and then check that the output from the READ method is expected.
+
+If we created our lemon above (unit test) and recieved a status code 201 created we could then read all of the products
+and expect a status code of 200, status text of Ok, and a message body containing the lemon that we created.
+
+Alternatively, we could "black box" system test by using the front end to create a new product and reading the page to
+confirm the new product has been created.
 
 }
 ---
