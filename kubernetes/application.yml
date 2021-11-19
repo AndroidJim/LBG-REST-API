@@ -1,0 +1,18 @@
+kind: Deployment
+metadata:
+  name: james-w-lbg-node-app
+  labels:
+    app: james-w-lbg-node-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: james-w-lbg-node-app
+  template:
+    metadata:
+      labels:
+        app: james-w-lbg-node-app
+    spec:
+      containers:
+      - name: james-w-lbg-node-app
+        image: gcr.io/lbg-training/james-w-lbg-node-app-image@sha256:a8fbcdde0851298202534a0acfca5acb851fbd50aafda8bc3a100c7522dcae51
