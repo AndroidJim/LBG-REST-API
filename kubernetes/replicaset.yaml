@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: james-w-lbg-node-app
+  labels:
+    app: james-w-lbg-node-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: james-w-lbg-node-app
+  template:
+    metadata:
+      labels:
+        app: james-w-lbg-node-app
+    spec:
+      containers:
+      - name: james-w-lbg-node-app-image
+        image: gcr.io/lbg-training/james-w-lbg-node-app-image:37
